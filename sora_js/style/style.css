@@ -9,15 +9,57 @@ body {
     margin: none;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(34, 34, 34);
+    background-color: black;
 }
 
-#background {
+#intro {
+	width: 100vw;
+	height: 100vh;
+	z-index: 20;
+}
+
+.background {
     position: absolute;
     overflow: hidden;
-    background-color: aquamarine;
-    width: 10000px;
-    height: 10000px;
+    width: 2000px;
+    height: 2000px;
+	user-select: none; /* Standard syntax */
+	-webkit-user-select: none; /* Chrome, Safari, and Opera */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+#indicator {
+	position: fixed;
+	top: 80px;
+	left: 80px;
+	fill: white;
+}
+
+#destination {
+	position: absolute;
+	fill: rgb(241, 14, 58);
+}
+
+#obstacls {
+	z-index: 10;
+	position: absolute;
+	width: 2000px;
+	height: 2000px;
+	top: 0px;
+	left: 0px;
+	user-select: none; /* Standard syntax */
+	-webkit-user-select: none; /* Chrome, Safari, and Opera */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.obstacl {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 0px;
+	left: 0px;
 }
 
 #player {
@@ -27,5 +69,4 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* background-color: white; */
 }
