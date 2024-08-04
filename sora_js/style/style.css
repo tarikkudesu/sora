@@ -77,9 +77,11 @@ body {
 	height: 100px;
 	transition: all 0.5s;
 	z-index: 30;
+	opacity: 0.8;
 }
 
 #pause:hover {
+	opacity: 1;
 	transform: scale(120%);
 	-webkit-transform: scale(120%);
 	-moz-transform: scale(120%);
@@ -88,6 +90,7 @@ body {
 }
 
 #pause:active {
+	opacity: 1;
 	transform: scale(110%);
 	-webkit-transform: scale(110%);
 	-moz-transform: scale(110%);
@@ -97,82 +100,105 @@ body {
 
 #resume {
 	position: fixed;
-	right: 50%;
+	left: 50%;
 	top: 50%;
 	width: 400px;
 	height: 400px;
-	transform: translate(-80%, -50%);
+	transform: translate(calc(-50% + 180px), -50%);
 	transition: all 0.5s;
 	z-index: 30;
+	opacity: 0.8;
+	-webkit-transform: translate(calc(-50% + 180px), -50%);
+	-moz-transform: translate(calc(-50% + 180px), -50%);
+	-ms-transform: translate(calc(-50% + 180px), -50%);
+	-o-transform: translate(calc(-50% + 180px), -50%);
 }
 
 #resume:hover {
-	transform: translate(-80%, -50%) scale(120%);
-	-webkit-transform: translate(-80%, -50%) scale(120%);
-	-moz-transform: translate(-80%, -50%) scale(120%);
-	-ms-transform: translate(-80%, -50%) scale(120%);
-	-o-transform: translate(-80%, -50%) scale(120%);
+	opacity: 1;
+	transform: translate(calc(-50% + 180px), -50%) scale(120%);
+	-webkit-transform: translate(calc(-50% + 180px), -50%) scale(120%);
+	-moz-transform: translate(calc(-50% + 180px), -50%) scale(120%);
+	-ms-transform: translate(calc(-50% + 180px), -50%) scale(120%);
+	-o-transform: translate(calc(-50% + 180px), -50%) scale(120%);
 }
 
 #resume:active {
-	transform: translate(-80%, -50%) scale(110%);
-	-webkit-transform: translate(-80%, -50%) scale(110%);
-	-moz-transform: translate(-80%, -50%) scale(110%);
-	-ms-transform: translate(-80%, -50%) scale(110%);
-	-o-transform: translate(-80%, -50%) scale(110%);
+	opacity: 1;
+	transform: translate(calc(-50% + 180px), -50%) scale(110%);
+	-webkit-transform: translate(calc(-50% + 180px), -50%) scale(110%);
+	-moz-transform: translate(calc(-50% + 180px), -50%) scale(110%);
+	-ms-transform: translate(calc(-50% + 180px), -50%) scale(110%);
+	-o-transform: translate(calc(-50% + 180px), -50%) scale(110%);
 }
 
 #exit {
 	position: fixed;
-	right: 50%;
+	left: 50%;
 	top: 50%;
 	width: 400px;
 	height: 400px;
-	transform: translate(-80%, -50%);
+	transform: translate(calc(-50% - 180px), -50%);
 	transition: all 0.5s;
 	z-index: 30;
+	opacity: 0.8;
+	-webkit-transform: translate(calc(-50% - 180px), -50%);
+	-moz-transform: translate(calc(-50% - 180px), -50%);
+	-ms-transform: translate(calc(-50% - 180px), -50%);
+	-o-transform: translate(calc(-50% - 180px), -50%);
 }
 
 #exit:hover {
-	transform: translate(-80%, -50%) scale(120%);
-	-webkit-transform: translate(-80%, -50%) scale(120%);
-	-moz-transform: translate(-80%, -50%) scale(120%);
-	-ms-transform: translate(-80%, -50%) scale(120%);
-	-o-transform: translate(-80%, -50%) scale(120%);
+	opacity: 1;
+	transform: translate(calc(-50% - 180px), -50%) scale(120%);
+	-webkit-transform: translate(calc(-50% - 180px), -50%) scale(120%);
+	-moz-transform: translate(calc(-50% - 180px), -50%) scale(120%);
+	-ms-transform: translate(calc(-50% - 180px), -50%) scale(120%);
+	-o-transform: translate(calc(-50% - 180px), -50%) scale(120%);
 }
 
 #exit:active {
-	transform: translate(-80%, -50%) scale(110%);
-	-webkit-transform: translate(-80%, -50%) scale(110%);
-	-moz-transform: translate(-80%, -50%) scale(110%);
-	-ms-transform: translate(-80%, -50%) scale(110%);
-	-o-transform: translate(-80%, -50%) scale(110%);
+	opacity: 1;
+	transform: translate(calc(-50% - 180px), -50%) scale(110%);
+	-webkit-transform: translate(calc(-50% - 180px), -50%) scale(110%);
+	-moz-transform: translate(calc(-50% - 180px), -50%) scale(110%);
+	-ms-transform: translate(calc(-50% - 180px), -50%) scale(110%);
+	-o-transform: translate(calc(-50% - 180px), -50%) scale(110%);
 }
 
-#play {
+#play-again {
 	position: fixed;
-	right: 40px;
-	top: 40px;
-	width: 100px;
-	height: 100px;
-	transition: all 0.5s;
+	top: 50%;
+	left: 50%;
 	z-index: 30;
+	width: 600px;
+	height: 600px;
+	transition: all 0.5s;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
 }
 
-#play:hover {
-	transform: scale(120%);
-	-webkit-transform: scale(120%);
-	-moz-transform: scale(120%);
-	-ms-transform: scale(120%);
-	-o-transform: scale(120%);
+#play-again:hover {
+	transform: translate(-50%, -50%) scale(120%);
+	-webkit-transform: translate(-50%, -50%) scale(120%);
+	-moz-transform: translate(-50%, -50%) scale(120%);
+	-ms-transform: translate(-50%, -50%) scale(120%);
+	-o-transform: translate(-50%, -50%) scale(120%);
 }
 
-#play:active {
-	transform: scale(110%);
-	-webkit-transform: scale(110%);
-	-moz-transform: scale(110%);
-	-ms-transform: scale(110%);
-	-o-transform: scale(110%);
+#play-again:active {
+	transform: translate(-50%, -50%) scale(110%);
+	-webkit-transform: translate(-50%, -50%) scale(110%);
+	-moz-transform: translate(-50%, -50%) scale(110%);
+	-ms-transform: translate(-50%, -50%) scale(110%);
+	-o-transform: translate(-50%, -50%) scale(110%);
 }
 
 #owari {

@@ -3,21 +3,29 @@ document.body.style.overflow = 'hidden';
 const bgSize = 15000;
 const intro = document.getElementById('intro');
 const start = document.getElementById('start');
+const exitEl = document.getElementById('exit');
 const pauseEl = document.getElementById('pause');
-// const playEl = document.getElementById('play');
+const rePlayEl = document.getElementById('play-again');
+const resumeEl = document.getElementById('resume');
 const player = document.getElementById('player');
 const owari = document.getElementById('owari');
 let   playerWidth = 100;
+let	  colorSelector = 0;
 const gameContainer = document.getElementById('container');
 const obstaclsContainer = document.getElementById('obstacls');
 const backgrounds = [`background-gray`, `background-red`, `background-cyan`, `background-yellow`, `background-green`];
 const colors = [`rgb(230, 0, 34)`, `rgb(0, 219, 230)`, `rgb(230, 169, 0)`, `rgb(0, 230, 50)`, `rgb(18, 18, 18)`];
-let	  colorSelector = 0;
 let   background = document.querySelector(`.${backgrounds[colorSelector]}`);
+let   bgSpeed = 0;
+let   game = false;
 
-// playEl.classList.toggle(`hidden`);
+exitEl.classList.toggle(`hidden`);
+resumeEl.classList.toggle(`hidden`);
 player.style.width = `${playerWidth}px`;
 player.style.height = `${playerWidth}px`;
+gameContainer.classList.toggle(`hidden`);
+rePlayEl.classList.toggle(`hidden`);
+owari.classList.toggle(`hidden`);
 
 backgrounds.forEach(element => {
 	if (element !== backgrounds[colorSelector]) {
@@ -26,11 +34,6 @@ backgrounds.forEach(element => {
 	}
 });
 
-let   bgSpeed = 0;
-let   game = false;
-
-gameContainer.classList.toggle(`hidden`);
-owari.classList.toggle(`hidden`);
 // Before you start criticizing the code just so you know i tried everything but nothing works
 // here is a list
 // -------------- using querySelectorAll and iterating over the array and 
@@ -77,6 +80,7 @@ let moveSpeed = 0.3;
 const returnSpeed = 0.01;
 let posP = [window.innerWidth / 2, window.innerHeight / 2];
 let center = [window.innerWidth / 2, window.innerHeight / 2];
+let ObsMaxWidth = 400;
 let backP = [0, 0];
 
 function rand(min, max) { return Math.random() * (max - min) + min; }
@@ -84,9 +88,9 @@ function rand(min, max) { return Math.random() * (max - min) + min; }
 const indicEl = document.getElementById('indicator');
 const destEl = document.getElementById('destination');
 let	destP = [rand(0, bgSize - window.innerWidth), rand(0, bgSize - window.innerHeight)];
+let w = rand(200, 800);
 destEl.style.top = `${destP[0]}px`;
 destEl.style.left = `${destP[1]}px`;
-let w = rand(200, 800);
 destEl.style.width = `${w}px`;
 destEl.style.height = `${w}px`;
 
@@ -94,7 +98,7 @@ const setObstacls = () => {
 	const setObs = (obs) => {
 		obs.style.top = `${rand(0, bgSize)}px`;
 		obs.style.left = `${rand(0, bgSize)}px`;
-		const w = rand(300, 800);
+		const w = rand(300, ObsMaxWidth);
 		obs.style.width = `${w}px`;
 		obs.style.height = `${w}px`;
 	}
@@ -116,7 +120,26 @@ const setObstacls = () => {
 	setObs(obs75); setObs(obs76); setObs(obs77); setObs(obs78); setObs(obs79);
 }
 
-setObstacls();
+const startGame = () => {
+	setObstacls();
+	backP = [0, 0];
+	playerWidth = 100;
+	colorSelector = 0;
+	posP = [window.innerWidth / 2, window.innerHeight / 2]
+	destEl.style.top = `${destP[0]}px`;
+	destEl.style.left = `${destP[1]}px`;
+	destEl.style.height = `${w}px`;
+	destEl.style.width = `${w}px`;
+	intro.classList.toggle(`hidden`);
+	start.classList.toggle(`hidden`);
+	gameContainer.classList.toggle(`hidden`);
+	pauseEl.classList.remove(`hidden`);
+	resumeEl.classList.add(`hidden`);
+	exitEl.classList.add(`hidden`);
+	game = true;
+	requestAnimationFrame(update);
+};
+
 
 const updatePosition = (x, y) => {
 	player.style.left = `${x}px`;
@@ -137,12 +160,12 @@ const mouseMove = (event) => {
 	let y = event.clientY;
 	if (event.clientX < window.innerWidth * 0.14)
 		x = window.innerWidth * 0.14;
-	else if (event.clientX > window.innerWidth - window.innerWidth * 0.14)
-		x = window.innerWidth - window.innerWidth * 0.14;
+	else if (event.clientX > window.innerWidth - window.innerWidth * 0.14 - playerWidth)
+		x = window.innerWidth - window.innerWidth * 0.14 - playerWidth;
 	if (event.clientY < window.innerHeight * 0.14)
 		y = window.innerHeight * 0.14;
-	else if (event.clientY > window.innerHeight - window.innerHeight * 0.14)
-		y = window.innerHeight - window.innerHeight * 0.14;
+	else if (event.clientY > window.innerHeight - window.innerHeight * 0.14 - playerWidth)
+		y = window.innerHeight - window.innerHeight * 0.14 - playerWidth;
 	const deltaX = x - posP[0];
     const deltaY = y - posP[1];
     const newX = posP[0] + deltaX * moveSpeed * 0.3;
@@ -254,8 +277,10 @@ const update = () => {
 				let temp = document.querySelector(`.${backgrounds[colorSelector]}`);
 				temp.classList.toggle(`hidden`);
 				colorSelector += 1;
-				if (colorSelector >= 5)
-					colorSelector = 0;
+				if (colorSelector == 5) {
+					game = false;
+					rePlayEl.classList.toggle(`hidden`);
+				}
 				temp = document.querySelector(`.${backgrounds[colorSelector]}`);
 				temp.classList.toggle(`hidden`);
 				console.log(temp);
@@ -269,11 +294,13 @@ const update = () => {
 				destEl.style.width = `${w}px`;
 				destEl.style.height = `${w}px`;
 				destEl.style.fill = `${colors[colorSelector]}`;
-				destEl.style.opacity = `1`;
-				requestAnimationFrame(update);
-				playerWidth = 150;
-				player.style.width = `${playerWidth}px`;
+				ObsMaxWidth += ObsMaxWidth * (colorSelector + 1) * 100;
 				player.style.height = `${playerWidth}px`;
+				player.style.width = `${playerWidth}px`;
+				moveSpeed += 0.1 * (colorSelector + 1);
+				destEl.style.opacity = `1`;
+				playerWidth = 150;
+				requestAnimationFrame(update);
 			}
 		} else {
 			timer = 0;
@@ -291,23 +318,29 @@ document.addEventListener('mouseup', () => {
 document.addEventListener('mousemove', (event) => {
 	if (pressed) { mouseMove(event); }
 });
-start.addEventListener('click', () => {
+
+start.addEventListener('click', startGame);
+rePlayEl.addEventListener('click', startGame);
+
+exitEl.addEventListener('click', () => {
 	intro.classList.toggle(`hidden`);
 	start.classList.toggle(`hidden`);
 	gameContainer.classList.toggle(`hidden`);	
-	game = true;
 	requestAnimationFrame(update);
 });
-// playEl.addEventListener('click', () => {
-// 	game = true;
-// 	pauseEl.classList.toggle(`hidden`);
-// 	playEl.classList.toggle(`hidden`);
-// 	requestAnimationFrame(update);
-// });
+
+resumeEl.addEventListener('click', () => {
+	game = true;
+	exitEl.classList.toggle(`hidden`);
+	resumeEl.classList.toggle(`hidden`);
+	requestAnimationFrame(update);
+});
+
 pauseEl.addEventListener('click', () => {
+	if (game === false) { return ; }
 	game = false;
-	pauseEl.classList.toggle(`hidden`);
-	// playEl.classList.toggle(`hidden`);
+	exitEl.classList.toggle(`hidden`);
+	resumeEl.classList.toggle(`hidden`);
 	requestAnimationFrame(update);
 });
 
