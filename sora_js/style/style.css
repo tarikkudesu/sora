@@ -95,6 +95,60 @@ body {
 	-o-transform: scale(110%);
 }
 
+#resume {
+	position: fixed;
+	right: 50%;
+	top: 50%;
+	width: 400px;
+	height: 400px;
+	transform: translate(-80%, -50%);
+	transition: all 0.5s;
+	z-index: 30;
+}
+
+#resume:hover {
+	transform: translate(-80%, -50%) scale(120%);
+	-webkit-transform: translate(-80%, -50%) scale(120%);
+	-moz-transform: translate(-80%, -50%) scale(120%);
+	-ms-transform: translate(-80%, -50%) scale(120%);
+	-o-transform: translate(-80%, -50%) scale(120%);
+}
+
+#resume:active {
+	transform: translate(-80%, -50%) scale(110%);
+	-webkit-transform: translate(-80%, -50%) scale(110%);
+	-moz-transform: translate(-80%, -50%) scale(110%);
+	-ms-transform: translate(-80%, -50%) scale(110%);
+	-o-transform: translate(-80%, -50%) scale(110%);
+}
+
+#exit {
+	position: fixed;
+	right: 50%;
+	top: 50%;
+	width: 400px;
+	height: 400px;
+	transform: translate(-80%, -50%);
+	transition: all 0.5s;
+	z-index: 30;
+}
+
+#exit:hover {
+	transform: translate(-80%, -50%) scale(120%);
+	-webkit-transform: translate(-80%, -50%) scale(120%);
+	-moz-transform: translate(-80%, -50%) scale(120%);
+	-ms-transform: translate(-80%, -50%) scale(120%);
+	-o-transform: translate(-80%, -50%) scale(120%);
+}
+
+#exit:active {
+	transform: translate(-80%, -50%) scale(110%);
+	-webkit-transform: translate(-80%, -50%) scale(110%);
+	-moz-transform: translate(-80%, -50%) scale(110%);
+	-ms-transform: translate(-80%, -50%) scale(110%);
+	-o-transform: translate(-80%, -50%) scale(110%);
+}
+
 #play {
 	position: fixed;
 	right: 40px;

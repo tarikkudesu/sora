@@ -1,10 +1,10 @@
 document.body.style.overflow = 'hidden';
 
-const bgSize = 20000;
+const bgSize = 15000;
 const intro = document.getElementById('intro');
 const start = document.getElementById('start');
 const pauseEl = document.getElementById('pause');
-const playEl = document.getElementById('play');
+// const playEl = document.getElementById('play');
 const player = document.getElementById('player');
 const owari = document.getElementById('owari');
 let   playerWidth = 100;
@@ -15,7 +15,7 @@ const colors = [`rgb(230, 0, 34)`, `rgb(0, 219, 230)`, `rgb(230, 169, 0)`, `rgb(
 let	  colorSelector = 0;
 let   background = document.querySelector(`.${backgrounds[colorSelector]}`);
 
-playEl.classList.toggle(`hidden`);
+// playEl.classList.toggle(`hidden`);
 player.style.width = `${playerWidth}px`;
 player.style.height = `${playerWidth}px`;
 
@@ -73,7 +73,7 @@ obstaclsContainer.style.width = `${bgSize}px`;
 obstaclsContainer.style.height = `${bgSize}px`;
 
 let pressed = false;
-let moveSpeed = 0.2;
+let moveSpeed = 0.3;
 const returnSpeed = 0.01;
 let posP = [window.innerWidth / 2, window.innerHeight / 2];
 let center = [window.innerWidth / 2, window.innerHeight / 2];
@@ -243,7 +243,7 @@ const update = () => {
 				game = false;
 			}
 		} else {
-			moveSpeed = 0.2;
+			moveSpeed = 0.3;
 		}
 		if (isOverlapping(player, destEl)) {
 			moveSpeed = 0.02;
@@ -298,16 +298,16 @@ start.addEventListener('click', () => {
 	game = true;
 	requestAnimationFrame(update);
 });
-playEl.addEventListener('click', () => {
-	game = true;
-	pauseEl.classList.toggle(`hidden`);
-	playEl.classList.toggle(`hidden`);
-	requestAnimationFrame(update);
-});
+// playEl.addEventListener('click', () => {
+// 	game = true;
+// 	pauseEl.classList.toggle(`hidden`);
+// 	playEl.classList.toggle(`hidden`);
+// 	requestAnimationFrame(update);
+// });
 pauseEl.addEventListener('click', () => {
 	game = false;
 	pauseEl.classList.toggle(`hidden`);
-	playEl.classList.toggle(`hidden`);
+	// playEl.classList.toggle(`hidden`);
 	requestAnimationFrame(update);
 });
 
