@@ -256,7 +256,7 @@ const update = () => {
 		isOverlapping(player, obs64) || isOverlapping(player, obs65) || isOverlapping(player, obs66) || isOverlapping(player, obs67) ||
 		isOverlapping(player, obs68) || isOverlapping(player, obs69) || isOverlapping(player, obs70) || isOverlapping(player, obs71) ||
 		isOverlapping(player, obs72) || isOverlapping(player, obs73) || isOverlapping(player, obs74) || isOverlapping(player, obs75) ||
-		isOverlapping(player, obs76) || isOverlapping(player, obs77) || isOverlapping(player, obs78) || isOverlapping(player, obs79)) {
+		isOverlapping(player, obs76) || isOverlapping(player, obs77) || isOverlapping(player, obs78) || isOverlapping(player, obs79) || !isOverlapping(player, background) ) {
 			moveSpeed = 0.02;
 			playerWidth -= playerWidth * 0.001;
 			player.style.width = `${playerWidth}px`;
@@ -295,11 +295,11 @@ const update = () => {
 				destEl.style.height = `${w}px`;
 				destEl.style.fill = `${colors[colorSelector]}`;
 				ObsMaxWidth += ObsMaxWidth * (colorSelector + 1) * 100;
-				player.style.height = `${playerWidth}px`;
-				player.style.width = `${playerWidth}px`;
 				moveSpeed += 0.1 * (colorSelector + 1);
 				destEl.style.opacity = `1`;
 				playerWidth = 150;
+				player.style.height = `${playerWidth}px`;
+				player.style.width = `${playerWidth}px`;
 				requestAnimationFrame(update);
 			}
 		} else {
