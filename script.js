@@ -230,12 +230,12 @@ const update = () => {
             background = temp;
             background.style.width = `${bgSize}px`
             background.style.height = `${bgSize}px`
-            destP = [rand(0, bgSize - ObsMaxWidth), rand(0, bgSize - ObsMaxWidth)];
-            destEl.style.top = `${destP[0]}px`;
-            destEl.style.left = `${destP[1]}px`;
             w = rand(80, 140);
             destEl.style.width = `${w}px`;
             destEl.style.height = `${w}px`;
+            destP = [rand(0, bgSize - w), rand(0, bgSize - w)];
+            destEl.style.top = `${destP[0]}px`;
+            destEl.style.left = `${destP[1]}px`;
             moveSpeed += 0.1 * (colorSelector + 1);
             destEl.style.opacity = `1`;
             playerWidth = 150;
