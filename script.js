@@ -57,11 +57,11 @@ function rand(min, max) { return Math.random() * (max - min) + min; }
 
 const setObstacls = () => {
 	const setObs = (obs) => {
-		obs.style.top = `${rand(0, bgSize)}px`;
-		obs.style.left = `${rand(0, bgSize)}px`;
 		const w = rand(400, ObsMaxWidth);
 		obs.style.width = `${w}px`;
 		obs.style.height = `${w}px`;
+		obs.style.top = `${rand(0, bgSize - w)}px`;
+		obs.style.left = `${rand(0, bgSize - w)}px`;
 	}
 	setObs(obs00); setObs(obs01); setObs(obs02); setObs(obs03); setObs(obs04);
 	setObs(obs05); setObs(obs06); setObs(obs07); setObs(obs08); setObs(obs09);
@@ -211,7 +211,6 @@ const update = () => {
         shadow.style.height = `${playerWidth}px`;
         if (playerWidth < 40)
             location.reload();
-        console.log(`hhhhh`);
     } else {
         moveSpeed = 0.3;
     }
