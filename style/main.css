@@ -17,7 +17,25 @@ body {
     object-fit: cover;
 }
 
+#profile {
+    position: absolute;
+    top: 50px;
+    left: 120px;
+    height: 53px;
+    width: 53px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(35, 90, 22);
+    border-radius: 25px;
+    cursor: pointer;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
 #github {
+    cursor: pointer;
     opacity: 0.8;
     position: absolute;
     top: 50px; left: 50px;

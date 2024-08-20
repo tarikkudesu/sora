@@ -136,8 +136,8 @@ class FlowFeildEffect {
     #generateDest() {
         if (this.newMap === true) {
             this.destP[2] = rand(300, 600)
-            this.destP[0] = rand(0, this.#backSize - this.destP[2]);
-            this.destP[1] = rand(0, this.#backSize - this.destP[2]);
+            this.destP[0] = rand(- this.#backSize, this.#backSize - this.destP[2]);
+            this.destP[1] = rand(- this.#backSize, this.#backSize - this.destP[2]);
             this.newMap = false;
         }
     }
